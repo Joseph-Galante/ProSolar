@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* =============== NAVBAR =============== */
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: hsl(0, 0%, 0%);
+  color:hsl(0, 0%, 90%);
+}
+.nav-icon a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nav-icon img:nth-child(2) {
+  display: none;
+}
+.active, .nav-icon:hover, .nav-icon:hover a {
+  color: #70c62f;
+  cursor: pointer;
+}
+.nav-icon a {
+  color:hsl(0, 0%, 90%);
+  text-decoration: none;
+}
+.active img:nth-child(1), .nav-icon:hover img:nth-child(1) {
+  display: none;
+}
+.active img:nth-child(2), .nav-icon:hover img:nth-child(2) {
+  display: initial;
+}
