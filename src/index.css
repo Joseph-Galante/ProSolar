@@ -1,3 +1,4 @@
+/* =========================================== BODY =========================================== */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: hsl(0, 0%, 0%);
+  background-color: hsl(0, 0%, 10%);
   color: hsl(0, 0%, 80%);
 }
 
@@ -14,12 +15,16 @@ code {
     monospace;
 }
 
+h1, h2, h3, h4 {
+  color: #70c62f;
+}
+
 /* =========================================== NAVBAR =========================================== */
 .navbar {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: hsl(0, 0%, 0%);
+  background-color: hsl(0, 0%, 10%);
   color:hsl(0, 0%, 80%);
   position: sticky;
   bottom: 0;
