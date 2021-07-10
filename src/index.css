@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 80%);
 }
 
 code {
@@ -18,24 +20,26 @@ code {
   justify-content: space-evenly;
   align-items: center;
   background-color: hsl(0, 0%, 0%);
-  color:hsl(0, 0%, 90%);
+  color:hsl(0, 0%, 80%);
+  position: sticky;
+  bottom: 0;
+  border-top: 1px solid hsl(0, 0%, 80%);
 }
 .nav-icon a {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color:hsl(0, 0%, 90%);
+  text-decoration: none;
+  margin: 15px 0 0 0;
 }
 .nav-icon img:nth-child(2) {
   display: none;
 }
-.active, .nav-icon:hover, .nav-icon:hover a {
+.active, .active a, .nav-icon:hover, .nav-icon:hover a {
   color: #70c62f;
   cursor: pointer;
-}
-.nav-icon a {
-  color:hsl(0, 0%, 90%);
-  text-decoration: none;
 }
 .active img:nth-child(1), .nav-icon:hover img:nth-child(1) {
   display: none;
