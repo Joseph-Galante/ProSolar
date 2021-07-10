@@ -11,10 +11,10 @@ const Tickets = () =>
         <div className="tickets-page">
             <h2>Submit A Service Ticket</h2>
             <form className="ticket-form">
-                <label className="ticket-label">Title:</label>
-                <input type="text" placeholder="Title" onChange={(e) => {setTitle(e.value)}} />
-                <label className="ticket-label">Description:</label>
-                <input type="text" placeholder="Description" onChange={(e) => {setDescription(e.value)}} />
+                <label className="title-label">Title</label>
+                <input type="text" placeholder="Title" value={title} onChange={(e) => {setTitle(e.value)}} />
+                <label className="description-label">Description</label>
+                <input type="text" placeholder="Description" value={description} onChange={(e) => {setDescription(e.value)}} />
                 <input type="submit" value="Submit Ticket" />
             </form>
 
@@ -26,6 +26,7 @@ const Tickets = () =>
                     <p>Title</p>
                     <p>Caller</p>
                     <p>Status</p>
+                    <p>Closed</p>
                 </span>
             </section>
         </div>      
