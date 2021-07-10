@@ -8,6 +8,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: hsl(0, 0%, 10%);
   color: hsl(0, 0%, 80%);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
 code {
@@ -26,9 +31,11 @@ h1, h2, h3, h4 {
   align-items: center;
   background-color: hsl(0, 0%, 10%);
   color:hsl(0, 0%, 80%);
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  width: 100%;
   border-top: 1px solid hsl(0, 0%, 80%);
+  transition: bottom 0.3s;
 }
 .nav-icon a {
   display: flex;
@@ -52,8 +59,53 @@ h1, h2, h3, h4 {
 .active img:nth-child(2), .nav-icon:hover img:nth-child(2) {
   display: initial;
 }
+.scroll {
+  bottom: -120px;
+}
+
+/* =========================================== TESLA =========================================== */
+.tesla-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: end;
+}
+
+/* =========================================== TICKETS =========================================== */
+.tickets-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: end;
+}
 
 /* =========================================== REFERRALS =========================================== */
+.referrals-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: end;
+}
+.referral-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
 .required {
   color: hsl(0, 100%, 50%);
+}
+
+/* =========================================== CONTACT =========================================== */
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contact-page p {
+  margin: 5px 0;
 }

@@ -12,6 +12,25 @@ import NavBar from './components/NavBar';
 
 
 function App() {
+  // functions
+  /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+  let prevScrollpos = window.pageYOffset;
+  window.onscroll = function()
+  {
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos)
+    {
+      document.querySelector(".navbar").classList.remove("scroll");
+    }
+    else
+    {
+      document.querySelector(".navbar").classList.add("scroll");
+    }
+    prevScrollpos = currentScrollPos;
+  }
+
+  
+
   return (
     <div className="App">
       <Route exact path="/" render={() => { return <Tesla /> }} />
