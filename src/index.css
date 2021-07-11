@@ -150,13 +150,17 @@ input[type="text"], input[type="password"] {
   width: 47%;
 }
 .user-info .info p {
-  margin: 7px 20px;
+  margin: 8px 20px;
 }
 .user-info .edit-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  width: 50%;
+}
+.edit-info input[type="text"] {
+  margin: 8px 20px;
 }
 .module-info .info p {
   margin: 8px 20px;
