@@ -45,6 +45,11 @@ input[type=button]:hover, input[type=submit]:hover {
 input[type="text"], input[type="password"] {
   margin: 10px;
 }
+textarea {
+  width: 78%;
+  height: 75px;
+  resize: none;
+}
 .invalid {
   border: 1px solid red;
   border-top-left-radius: 2px;
@@ -58,6 +63,7 @@ input[type="text"], input[type="password"] {
   justify-content: center;
   align-items: center;
   margin: auto 0;
+  text-align: center;
 }
 
 /* =========================================== NAVBAR =========================================== */
@@ -173,6 +179,27 @@ input[type="text"], input[type="password"] {
   justify-content: center;
   align-items: center;
   text-align: end;
+}
+.ticket-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.ticket-form .labels {
+  width: 37%;
+  margin: -13% 0 0 0;
+}
+.ticket-form .inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  margin: 0 0 20px 0;
+}
+.ticket-form .inputs textarea {
+  margin: 10px 0 0 0;
 }
 
 /* =========================================== REFERRALS =========================================== */
