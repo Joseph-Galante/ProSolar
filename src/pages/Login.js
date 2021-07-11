@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // contexts
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 
 const Login = () =>
@@ -11,15 +11,48 @@ const Login = () =>
     const { userState } = useContext(UserContext);
     
     // states
-    const [user, setUser] = userState;
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [ user, setUser ] = userState;
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
 
     // functions
     const handleSubmit = (e) =>
     {
         e.preventDefault();
-        axios.post(`${env.BACKEND_URL}/users/login`, {
+        // check for empty fields
+        if (email === "" || password === "")
+        {
+            // clear messages
+            document.querySelector(".messages").innerHTML = null;
+            if (email === "")
+            {
+                // grab email input
+                const emailInput = document.querySelector("#email");
+                // add invalid class
+                emailInput.classList.add("invalid");
+                // create invalid message
+                const message = document.createElement("p");
+                message.innerHTML = "Email is required";
+                message.style.color = "red";
+                // add message
+                document.querySelector(".messages").append(message);
+            }
+            if (password === "")
+            {
+                // grab password input
+                const passwordInput = document.querySelector("#password");
+                // add invalid class
+                passwordInput.classList.add("invalid");
+                // create invalid message
+                const message = document.createElement("p");
+                message.innerHTML = "Password is required";
+                message.style.color = "red";
+                // add message
+                document.querySelector(".messages").append(message);
+            }
+            return;
+        }
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}user/login`, {
             email: email,
             password: password
         }).then((res) =>
@@ -30,20 +63,37 @@ const Login = () =>
         }).catch((error) =>
         {
             console.log(error.message);
-            // check for unauthorized message - wrong login info
+            // check for unauthorized message - incorrect password
             if (error.message === 'Request failed with status code 401')
             {
-                displayMessage(false, 'Email or password is incorrect.');
+                // clear messages
+                document.querySelector(".messages").innerHTML = null;
+                // create invalid message
+                const message = document.createElement("p");
+                message.innerHTML = "Incorrect password";
+                message.style.color = "red";
+                // add message
+                document.querySelector(".messages").append(message);
+            }
+            // check for could not be found message - incorrect email
+            else if (error.message === 'Request failed with status code 404')
+            {
+                // clear messages
+                document.querySelector(".messages").innerHTML = null;
+                // create invalid message
+                const message = document.createElement("p");
+                message.innerHTML = "Incorrect email";
+                message.style.color = "red";
+                // add message
+                document.querySelector(".messages").append(message);
             }
         })
     }
 
-    // on component load
-    useEffect(clearMessage, []);
-
     return (
         <div className="login-page">
-            <h1>Login</h1>
+            <h2 className="heading">Login</h2>
+            <p className="messages"></p>
             <form onSubmit={handleSubmit}>
                 <div className="login-form">
                     <div className="login-labels">
@@ -55,8 +105,8 @@ const Login = () =>
                         <input id="password" type="password" value={password} placeholder="Password" onChange={(e) => {setPassword(e.target.value)}}/>
                     </div>
                 </div>
-                <input type="submit" value="Login" onClick={handleSubmit}/>
             </form>
+            <input type="submit" value="Login" onClick={handleSubmit}/>
         </div>
     )
 }

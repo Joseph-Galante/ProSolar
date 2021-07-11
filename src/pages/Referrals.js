@@ -23,30 +23,30 @@ const Referrals = () =>
                     <span>Friend's Name</span>
                     <span className="required">*</span>
                 </label>
-                <input type="text" placeholder="Friend's Name" value={friendsName} onChange={(e) => {setFriendsName(e.value)}} />
+                <input type="text" placeholder="Friend's Name" value={friendsName} onChange={(e) => {setFriendsName(e.target.value)}} />
                 <label className="friends-name-label">
                     <span>Friend's Email</span>
                     <span className="required">*</span>
                 </label>
-                <input type="text" placeholder="Friend's Email" value={friendsEmail} onChange={(e) => {setFriendsEmail(e.value)}} />
+                <input type="text" placeholder="Friend's Email" value={friendsEmail} onChange={(e) => {setFriendsEmail(e.target.value)}} />
                 <label className="friends-name-label">
                     <span>Friend's Phone</span>
                 </label>
-                <input type="text" placeholder="Friend's Phone" value={friendsPhone} onChange={(e) => {setFriendsPhone(e.value)}} />
+                <input type="text" placeholder="Friend's Phone" value={friendsPhone} onChange={(e) => {setFriendsPhone(e.target.value)}} />
                 <label className="friends-name-label">
                     <span>Your Name</span>
                     <span className="required">*</span>
                 </label>
-                <input type="text" placeholder="Your Name" value={yourName} onChange={(e) => {setYourName(e.value)}} />
+                <input type="text" placeholder="Your Name" value={yourName} onChange={(e) => {setYourName(e.target.value)}} />
                 <label className="friends-name-label">
                     <span>Your Email</span>
                     <span className="required">*</span>
                 </label>
-                <input type="text" placeholder="Your Email" value={yourEmail} onChange={(e) => {setYourEmail(e.value)}} />
+                <input type="text" placeholder="Your Email" value={yourEmail} onChange={(e) => {setYourEmail(e.target.value)}} />
                 <label className="friends-name-label">
                     <span>Your Phone</span>
                 </label>
-                <input type="text" placeholder="Your Phone" value={yourPhone} onChange={(e) => {setYourPhone(e.value)}} />
+                <input type="text" placeholder="Your Phone" value={yourPhone} onChange={(e) => {setYourPhone(e.target.value)}} />
                 <input type="submit" value="Submit" />
             </form>
         </div>

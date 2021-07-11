@@ -14,7 +14,7 @@ const UserProvider = ({children}) =>
         // console.log(userId);
         if (userId)
         {
-            axios.get(`${REACT_APP_BACKEND_URL}/user/verify`, {
+            axios.get(`${process.env.REACT_APP_BACKEND_URL}user/verify`, {
                 headers: { Authorization: userId }
             }).then((res) =>
             {

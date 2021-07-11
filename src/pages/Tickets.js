@@ -12,9 +12,9 @@ const Tickets = () =>
             <h2>Submit A Service Ticket</h2>
             <form className="ticket-form">
                 <label className="title-label">Title</label>
-                <input type="text" placeholder="Title" value={title} onChange={(e) => {setTitle(e.value)}} />
+                <input type="text" placeholder="Title" value={title} onChange={(e) => {setTitle(e.target.value)}} />
                 <label className="description-label">Description</label>
-                <input type="text" placeholder="Description" value={description} onChange={(e) => {setDescription(e.value)}} />
+                <input type="text" placeholder="Description" value={description} onChange={(e) => {setDescription(e.target.value)}} />
                 <input type="submit" value="Submit Ticket" />
             </form>
 
