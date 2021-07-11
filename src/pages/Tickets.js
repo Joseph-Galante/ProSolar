@@ -1,11 +1,20 @@
 // imports
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
+// contexts
+import { NavContext } from '../contexts/NavContext';
 const Tickets = () =>
 {
+    // contexts
+    const { navState } = useContext(NavContext);
+    const [ nav, setNav ] = navState;
+
     // states
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
+
+    // on component load
+    useEffect(() => {setNav("#tickets")}, []);
 
     return (
         <div className="tickets-page">

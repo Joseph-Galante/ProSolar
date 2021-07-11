@@ -1,8 +1,15 @@
 // imports
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+
+// contexts
+import { NavContext } from '../contexts/NavContext';
 
 const Referrals = () =>
 {
+    // contexts
+    const { navState } = useContext(NavContext);
+    const [ nav, setNav ] = navState;
+    
     // states
     const [ friendsName, setFriendsName ] = useState('');
     const [ friendsEmail, setFriendsEmail ] = useState('');
@@ -10,6 +17,9 @@ const Referrals = () =>
     const [ yourName, setYourName ] = useState('');
     const [ yourEmail, setYourEmail ] = useState('');
     const [ yourPhone, setYourPhone ] = useState('');
+
+    // on component load
+    useEffect(() => {setNav("#referrals")}, []);
 
     return (
         <div className="referrals-page">

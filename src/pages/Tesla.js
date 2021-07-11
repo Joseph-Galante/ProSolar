@@ -1,19 +1,21 @@
 // imports
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
 // pages
 import Login from './Login';
 
 // contexts
-import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from '../contexts/UserContext';
+import { NavContext } from '../contexts/NavContext';
 
 const Tesla = () =>
 {
     // contexts
     const { userState } = useContext(UserContext);
     const [ user, setUser ] = userState;
+    const { navState } = useContext(NavContext);
+    const [ nav, setNav ] = navState;
 
     // states
     const [ editing, setEditing ] = useState(false);
@@ -90,6 +92,9 @@ const Tesla = () =>
         }).catch(error => console.log(error.message));
     }
 
+    // on component load
+    useEffect(() => {setNav("#tesla")}, []);
+
     return (
         <div className="tesla-page">
             {user.id ?
@@ -132,13 +137,22 @@ const Tesla = () =>
                         <h2>HOME IMAGES</h2>
                     </section>
                     <br/>
+                    <h3>Module Info</h3>
                     <section className="module-info">
-                        <h3>Module Info</h3>
-                        <p>Type</p>
-                        <p>Qty</p>
-                        <p>kW</p>
-                        <p>Wattage</p>
-                        <p>Inverter</p>
+                        <section className="labels">
+                            <p>Type</p>
+                            <p>Qty</p>
+                            <p>kW</p>
+                            <p>Wattage</p>
+                            <p>Inverter</p>
+                        </section>
+                        <section className="info">
+                            <p>{user.modType}</p>
+                            <p>{user.modNum} Powerwalls</p>
+                            <p>{user.modKW}kW</p>
+                            <p>{user.modWattage}W</p>
+                            <p>{user.inverter}</p>
+                        </section>
                     </section>
                 </>
                 :

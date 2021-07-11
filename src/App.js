@@ -1,6 +1,6 @@
 // imports
 import { Route } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
 // pages
 import Tesla from './pages/Tesla';
@@ -13,7 +13,6 @@ import NavBar from './components/NavBar';
 
 // contexts
 import { UserContext } from './contexts/UserContext';
-import { useContext } from 'react';
 
 function App() {
   // contexts
@@ -42,13 +41,13 @@ function App() {
 
   return (
     <div className="App">
-      <Route exact path="/" render={() => { return <Tesla /> }} />
+      <Route exact path="/" render={() => {  return <Tesla /> }} />
 
-      <Route exact path="/tickets" render={() => { if (user.id) { return <Tickets /> } else { return <Tesla /> } }} />
+      <Route exact path="/tickets" render={() => {   if (user.id) { return <Tickets /> } else { return <Tesla /> } }} />
 
-      <Route exact path="/referrals" render={() => { if (user.id) { return <Referrals /> } else { return <Tesla /> } }} />
+      <Route exact path="/referrals" render={() => {   if (user.id) { return <Referrals /> } else { return <Tesla /> } }} />
 
-      <Route exact path="/contact" render={() => { if (user.id) { return <Contact /> } else { return <Tesla /> } }} />
+      <Route exact path="/contact" render={() => {  if (user.id) { return <Contact /> } else { return <Tesla /> } }} />
 
       <NavBar />
     </div>

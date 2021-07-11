@@ -1,7 +1,18 @@
 // imports
+import { useContext, useEffect } from 'react';
+
+// contexts
+import { NavContext } from '../contexts/NavContext';
 
 const Contact = () =>
 {
+    // contexts
+    const { navState } = useContext(NavContext);
+    const [ nav, setNav ] = navState;
+
+    // on component load
+    useEffect(() => {setNav("#contact")}, []);
+
     return (
         <div className="contact-page">
             <h3>HEADQUARTERS</h3>

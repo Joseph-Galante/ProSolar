@@ -9,12 +9,15 @@ import { BrowserRouter } from 'react-router-dom';
 
 // contexts
 import { UserProvider } from './contexts/UserContext';
+import { NavProvider } from './contexts/NavContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <NavProvider>
+          <App />
+        </NavProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,

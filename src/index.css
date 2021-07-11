@@ -133,19 +133,23 @@ input[type="text"], input[type="password"] {
   flex-direction: column;
   align-items: flex-start;
 }
-.user-info {
+.user-info, .module-info {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
-.user-info .info {
+.user-info .info, .module-info .info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 60%;
+  width: 50%;
 }
-.info p {
+.user-info .labels, .module-info .labels {
+  width: 47%;
+}
+.user-info .info p {
   margin: 7px 20px;
 }
 .user-info .edit-info {
@@ -153,7 +157,9 @@ input[type="text"], input[type="password"] {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 60%;
+}
+.module-info .info p {
+  margin: 8px 20px;
 }
 
 /* =========================================== TICKETS =========================================== */
