@@ -18,11 +18,14 @@ const Tickets = () =>
     // states
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
-
+    const [ tickets, setTickets ] = useState([]);
+    
     // functions
     const submitTicket = (e) =>
     {
         e.preventDefault();
+        // clear messages
+        document.querySelector(".messages").innerHTML = null;
         axios.post(`${process.env.REACT_APP_BACKEND_URL}tickets/submit`, {
             title, description}, { headers: { Authorization: user.id }
         }).then(res => {
@@ -35,7 +38,8 @@ const Tickets = () =>
                     "from_email": user.email,
                     "title": title,
                     "message": description,
-                    "ticket_id": res.data.ticket.id
+                    "ticket_id": res.data.ticket.id,
+                    "opened": `${res.data.ticket.opened.slice(0, 10)} ${res.data.ticket.opened.slice(11, 13) % 12}${res.data.ticket.opened.slice(13, 19)} ${res.data.ticket.opened.slice(11, 13) / 12 >= 1 ? 'PM' : 'AM'}`
                 },
                 'user_VumGsyYh6mZ735zAMicaM'
             ).then(res =>
@@ -52,12 +56,25 @@ const Tickets = () =>
                 // clear ticket form
                 setTitle('');
                 setDescription('');
+                // load tickets
+                getTickets();
             }).catch(error => console.log(error.message));
+        }).catch(error => console.log(error.message));
+    }
+
+    const getTickets = () =>
+    {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}tickets/user`, { headers: { Authorization: user.id }
+        }).then(res =>
+        {
+            // console.log(res)
+            setTickets(res.data.tickets);
         }).catch(error => console.log(error.message));
     }
 
     // on component load
     useEffect(() => {setNav("#tickets")}, []);
+    useEffect(getTickets, []);
 
     return (
         <div className="tickets-page">
@@ -76,16 +93,39 @@ const Tickets = () =>
             <input type="submit" value="Submit Ticket" onClick={submitTicket} />
 
             <h2>Open Tickets</h2>
-            <section className="open-tickets">
-                <span className="open-tickets-header">
-                    <p>Number</p>
-                    <p>Opened</p>
-                    <p>Title</p>
-                    <p>Caller</p>
-                    <p>Status</p>
-                    <p>Closed</p>
-                </span>
-            </section>
+            {tickets ?
+                tickets.length > 0 ?
+                    <section className="tickets">
+                        <section className="ticket-ids">
+                            <p>Number</p>
+                            {tickets.map((t, i) =>
+                            {
+                                if (t.complete) return;
+                                else return ( <p key={i}>#{t.id}</p> );
+                            })}
+                        </section>
+                        <section className="ticket-titles">
+                            <p>Title</p>
+                            {tickets.map((t, i) =>
+                            {
+                                if (t.complete) return;
+                                else return ( <p key={i+tickets.length}>{t.title}</p> );
+                            })}
+                        </section>
+                        <section className="ticket-opens">
+                            <p>Opened</p>
+                            {tickets.map((t, i) =>
+                            {
+                                if (t.complete) return;
+                                else return ( <p key={i+tickets.length*2}>{`${t.opened.slice(0, 10)} ${t.opened.slice(11, 13) % 12}${t.opened.slice(13, 19)} ${t.opened.slice(11, 13) / 12 > 1 ? 'PM' : 'AM'}`}</p> );
+                            })}
+                        </section>
+                    </section>
+                    :
+                    'No tickets to display'
+                    :
+                    'Getting tickets...'
+            }
         </div>      
     )
 }

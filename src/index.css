@@ -201,6 +201,27 @@ textarea {
 .ticket-form .inputs textarea {
   margin: 10px 0 0 0;
 }
+.tickets {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+.ticket-ids, .ticket-titles, .ticket-opens {
+  width: 34%;
+}
+.ticket-ids p, .ticket-titles p, .ticket-opens p {
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+}
+.ticket-ids p:nth-child(even), .ticket-titles p:nth-child(even), .ticket-opens p:nth-child(even) {
+  background-color: hsl(0, 0%, 20%);
+}
 
 /* =========================================== REFERRALS =========================================== */
 .referrals-page {
