@@ -32,11 +32,11 @@ const Tesla = () =>
 
     const editInfo = () =>
     {
+        // clear messages
+        document.querySelector(".messages").innerHTML = null;
         // check for empty fields
         if (name === "" || email === "" || password === "")
         {
-            // clear messages
-            document.querySelector(".messages").innerHTML = null;
             if (name === "")
             {
                 // grab name input
@@ -49,6 +49,10 @@ const Tesla = () =>
                 message.style.color = "red";
                 // add message
                 document.querySelector(".messages").append(message);
+            }
+            else
+            {
+                document.querySelector("#name").classList.remove("invalid");
             }
             if (email === "")
             {
@@ -63,6 +67,10 @@ const Tesla = () =>
                 // add message
                 document.querySelector(".messages").append(message);
             }
+            else
+            {
+                document.querySelector("#email").classList.remove("invalid");
+            }
             if (password === "")
             {
                 // grab password input
@@ -76,8 +84,20 @@ const Tesla = () =>
                 // add message
                 document.querySelector(".messages").append(message);
             }
+            else
+            {
+                document.querySelector("#password").classList.remove("invalid");
+            }
             return;
         }
+        else
+        {
+            document.querySelectorAll(".edit-info-input").forEach(i =>
+            { 
+                i.classList.remove("invalid");
+            });
+        }
+
         axios.put(`${process.env.REACT_APP_BACKEND_URL}user/profile`, {
             name: name,
             email: email,
@@ -109,9 +129,9 @@ const Tesla = () =>
                         </section>
                         {editing ?
                             <section className="edit-info">
-                                <input id="name" type="text" placeholder="Name" value={name} onChange={(e) => {setName(e.target.value)}} />
-                                <input id="email" type="text" placeholder="Email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
-                                <input id="password" type="text" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
+                                <input id="name" className="edit-info-input" type="text" placeholder="Name" value={name} onChange={(e) => {setName(e.target.value)}} />
+                                <input id="email" className="edit-info-input" type="text" placeholder="Email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
+                                <input id="password" className="edit-info-input" type="text" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
                             </section>
                             :
                             <section className="info">

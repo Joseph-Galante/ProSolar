@@ -26,6 +26,8 @@ const Tickets = () =>
         e.preventDefault();
         // clear messages
         document.querySelector(".messages").innerHTML = null;
+        // check for empty fields
+        
         axios.post(`${process.env.REACT_APP_BACKEND_URL}tickets/submit`, {
             title, description}, { headers: { Authorization: user.id }
         }).then(res => {

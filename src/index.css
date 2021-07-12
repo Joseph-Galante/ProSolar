@@ -10,6 +10,7 @@ body {
   color: hsl(0, 0%, 80%);
   -ms-overflow-style: none;
   scrollbar-width: none;
+  padding: 0 0 150px 0;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -229,7 +230,10 @@ textarea {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: end;
+  padding: 0 20px;
+}
+.referrals-page p {
+  text-align: center;
 }
 .referral-form {
   display: flex;
