@@ -5,6 +5,7 @@ import { send } from 'emailjs-com';
 // contexts
 import { NavContext } from '../contexts/NavContext';
 import { UserContext } from '../contexts/UserContext';
+import { message } from 'statuses';
 
 const Contact = () =>
 {
@@ -89,6 +90,35 @@ const Contact = () =>
                 i.classList.remove("invalid");
             });
         }
+
+        send(
+            'service_qgtt9iq',
+            'template_w2uzrgp',
+            {
+                "from_name": user.name,
+                "from_email": user.email,
+                "from_phone": phone,
+                "subject": subject,
+                "message": contactMessage
+            },
+            'user_VumGsyYh6mZ735zAMicaM'
+        ).then(res =>
+        {
+            // console.log('Email sent', res.status, res.text);
+            // clear messages
+            document.querySelector(".messages").innerHTML = null;
+            setContacting(false);
+            // create success message
+            const message = document.createElement("p");
+            message.innerHTML = "Thank you for contacting us. A sales representative will get back to you as soon as possible.";
+            message.style.color = "#70c62f";
+            // display message
+            document.querySelector(".messages").append(message);
+            // clear contact form
+            setPhone('');
+            setSubject('');
+            setContactMessage('');
+        }).catch(error => console.log(error.message));
     }
 
     // on component load
@@ -132,12 +162,15 @@ const Contact = () =>
                 <p>Wilton Manors, FL 33311, USA</p>
                 <p>*Multiple Locations</p>
                 
+                {contacting ? null : <p className="messages"></p>}
+
                 <input type="button" value="Contact Us" onClick={() => {setContacting(true)}} />
             </section>
 
             {contacting ?
                 <section className="drop-line">
                     <h3>Drop us a line</h3>
+                    <p className="messages"></p>
                     <form className="contact-form" onSubmit={dropLine}>
                         <label className="name-label">
                             <span>Name</span>
