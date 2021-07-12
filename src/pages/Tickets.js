@@ -27,7 +27,52 @@ const Tickets = () =>
         // clear messages
         document.querySelector(".messages").innerHTML = null;
         // check for empty fields
-        
+        if (title === "" || description === "")
+        {
+            if (title === "")
+            {
+                // grab title input
+                const titleInput = document.querySelector("#title");
+                // add invalid class
+                titleInput.classList.add("invalid");
+                // create invalid message
+                const message = document.createElement("p");
+                message.innerHTML = "Title is required";
+                message.style.color = "red";
+                // add message
+                document.querySelector(".messages").append(message);
+            }
+            else
+            {
+                document.querySelector("#title").classList.remove("invalid");
+            }
+            if (description === "")
+            {
+                // grab description input
+                const descriptionInput = document.querySelector("#description");
+                // add invalid class
+                descriptionInput.classList.add("invalid");
+                // create invalid message
+                const message = document.createElement("p");
+                message.innerHTML = "Description is required";
+                message.style.color = "red";
+                // add message
+                document.querySelector(".messages").append(message);
+            }
+            else
+            {
+                document.querySelector("#description").classList.remove("invalid");
+            }
+            return;
+        }
+        else
+        {
+            document.querySelectorAll(".ticket-input").forEach(i =>
+            { 
+                i.classList.remove("invalid");
+            });
+        }
+
         axios.post(`${process.env.REACT_APP_BACKEND_URL}tickets/submit`, {
             title, description}, { headers: { Authorization: user.id }
         }).then(res => {
@@ -84,12 +129,18 @@ const Tickets = () =>
             <p className="messages"></p>
             <form className="ticket-form" onSubmit={submitTicket}>
                 <section className="labels">
-                    <p className="title-label">Title</p>
-                    <p className="description-label">Description</p>
+                    <p className="title-label">
+                        <span>Title</span>
+                        <span className="required">*</span>
+                    </p>
+                    <p className="description-label">
+                        <span>Description</span>
+                        <span className="required">*</span>
+                    </p>
                 </section>
                 <section className="inputs">
-                    <input type="text" placeholder="Title" value={title} onChange={(e) => {setTitle(e.target.value)}} />
-                    <textarea placeholder="Description" value={description} onChange={(e) => {setDescription(e.target.value)}} />
+                    <input id="title"className="ticket-input" type="text" placeholder="Title" value={title} onChange={(e) => {setTitle(e.target.value)}} />
+                    <textarea id="description"className="ticket-input" placeholder="Description" value={description} onChange={(e) => {setDescription(e.target.value)}} />
                 </section>
             </form>
             <input type="submit" value="Submit Ticket" onClick={submitTicket} />
