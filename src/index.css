@@ -224,6 +224,10 @@ textarea {
 .ticket-ids p:nth-child(even), .ticket-titles p:nth-child(even), .ticket-opens p:nth-child(even) {
   background-color: hsl(0, 0%, 20%);
 }
+.tickets-page #description {
+  margin: 10px 0 0 -9px;
+  width: 79%;
+}
 
 /* =========================================== REFERRALS =========================================== */
 .referrals-page {
