@@ -44,9 +44,10 @@ input[type=button]:hover, input[type=submit]:hover {
   background-color: #70c62f;
 }
 input[type="text"], input[type="password"] {
-  margin: 10px;
+  margin: 10px 10px 10px 0;
 }
 textarea {
+  margin: 10px 10px 10px 0;
   width: 78%;
   height: 75px;
   resize: none;
@@ -246,15 +247,45 @@ textarea {
 }
 
 /* =========================================== CONTACT =========================================== */
-.contact-page {
+.contact-page, .contact-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+.blurred {
+  filter: brightness(50%);
+}
 .contact-page p {
   margin: 5px 0;
 }
-.contact-page h3, .contact-page input {
+.contact-page h3, .contact-page input[type="button"] {
   margin: 50px 0 0 0;
+}
+.drop-line {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  background-color: hsl(0, 0%, 20%);
+  position: fixed;
+  top: 20%;
+  border-radius: 2%;
+}
+.drop-line h3 {
+  margin: 10px 0;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#message {
+  width: 91%;
+}
+.contact-inputs input {
+  margin: 20px 10px;
+  background-color: hsl(0, 0%, 20%);
 }
