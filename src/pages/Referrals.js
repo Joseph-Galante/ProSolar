@@ -18,8 +18,6 @@ const Referrals = () =>
     const [ friendsName, setFriendsName ] = useState('');
     const [ friendsEmail, setFriendsEmail ] = useState('');
     const [ friendsPhone, setFriendsPhone ] = useState('');
-    const [ yourName, setYourName ] = useState(user.name);
-    const [ yourEmail, setYourEmail ] = useState(user.email);
     const [ yourPhone, setYourPhone ] = useState('');
 
     // functions
@@ -29,7 +27,7 @@ const Referrals = () =>
         // clear messages
         document.querySelector(".messages").innerHTML = null;
         // check for empty fields
-        if (friendsName === "" || friendsEmail === "" || yourName === "" || yourEmail === "")
+        if (friendsName === "" || friendsEmail === "")
         {
             if (friendsName === "")
             {
@@ -64,40 +62,6 @@ const Referrals = () =>
             else
             {
                 document.querySelector("#friends-email").classList.remove("invalid");
-            }
-            if (yourName === "")
-            {
-                // grab name input
-                const yourNameInput = document.querySelector("#your-name");
-                // add invalid class
-                yourNameInput.classList.add("invalid");
-                // create invalid message
-                const message = document.createElement("p");
-                message.innerHTML = "Your name is required";
-                message.style.color = "red";
-                // add message
-                document.querySelector(".messages").append(message);
-            }
-            else
-            {
-                document.querySelector("#your-name").classList.remove("invalid");
-            }
-            if (yourEmail === "")
-            {
-                // grab email input
-                const yourEmailInput = document.querySelector("#your-email");
-                // add invalid class
-                yourEmailInput.classList.add("invalid");
-                // create invalid message
-                const message = document.createElement("p");
-                message.innerHTML = "Your email is required";
-                message.style.color = "red";
-                // add message
-                document.querySelector(".messages").append(message);
-            }
-            else
-            {
-                document.querySelector("#your-email").classList.remove("invalid");
             }
             return;
         }
@@ -156,26 +120,26 @@ const Referrals = () =>
                     <span className="required">*</span>
                 </label>
                 <input id="friends-name" className="referral-input" type="text" placeholder="Friend's name" value={friendsName} onChange={(e) => {setFriendsName(e.target.value)}} />
-                <label className="friends-name-label">
+                <label className="friends-email-label">
                     <span>Friend's Email</span>
                     <span className="required">*</span>
                 </label>
                 <input id="friends-email" className="referral-input" type="text" placeholder="Friend's email" value={friendsEmail} onChange={(e) => {setFriendsEmail(e.target.value)}} />
-                <label className="friends-name-label">
+                <label className="friends-phone-label">
                     <span>Friend's Phone</span>
                 </label>
                 <input className="referral-input" type="text" placeholder="Friend's phone" value={friendsPhone} onChange={(e) => {setFriendsPhone(e.target.value)}} />
-                <label className="friends-name-label">
+                <label className="your-name-label">
                     <span>Your Name</span>
                     <span className="required">*</span>
                 </label>
                 <input id="your-name" className="referral-input" type="text" placeholder="Your name" value={user.name} />
-                <label className="friends-name-label">
+                <label className="your-email-label">
                     <span>Your Email</span>
                     <span className="required">*</span>
                 </label>
                 <input id="your-email" className="referral-input" type="text" placeholder="Your email" value={user.email} />
-                <label className="friends-name-label">
+                <label className="your-phone-label">
                     <span>Your Phone</span>
                 </label>
                 <input className="referral-input" type="text" placeholder="Your phone" value={yourPhone} onChange={(e) => {setYourPhone(e.target.value)}} />
