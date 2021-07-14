@@ -5,7 +5,6 @@ import { send } from 'emailjs-com';
 // contexts
 import { NavContext } from '../contexts/NavContext';
 import { UserContext } from '../contexts/UserContext';
-import { message } from 'statuses';
 
 const Contact = () =>
 {

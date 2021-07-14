@@ -130,7 +130,7 @@ const Tickets = () =>
             <form className="ticket-form" onSubmit={submitTicket}>
                 <section className="labels">
                     <p className="title-label">
-                        <span>Title</span>
+                        <span>Subject</span>
                         <span className="required">*</span>
                     </p>
                     <p className="description-label">
@@ -139,7 +139,7 @@ const Tickets = () =>
                     </p>
                 </section>
                 <section className="inputs">
-                    <input id="title"className="ticket-input" type="text" placeholder="Title" value={title} onChange={(e) => {setTitle(e.target.value)}} />
+                    <input id="title"className="ticket-input" type="text" placeholder="Subject" value={title} onChange={(e) => {setTitle(e.target.value)}} />
                     <textarea id="description"className="ticket-input" placeholder="Description" value={description} onChange={(e) => {setDescription(e.target.value)}} />
                 </section>
             </form>
@@ -158,7 +158,7 @@ const Tickets = () =>
                             })}
                         </section>
                         <section className="ticket-titles">
-                            <p>Title</p>
+                            <p>Subject</p>
                             {tickets.map((t, i) =>
                             {
                                 if (t.complete) return;

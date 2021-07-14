@@ -52,7 +52,7 @@ const Login = () =>
             }
             return;
         }
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}user/login`, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, {
             email: email,
             password: password
         }).then((res) =>
