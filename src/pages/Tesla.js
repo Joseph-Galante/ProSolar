@@ -98,7 +98,7 @@ const Tesla = () =>
             });
         }
 
-        axios.put(`${process.env.REACT_APP_BACKEND_URL}user/profile`, {
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/user/profile`, {
             name: name,
             email: email,
             password: password

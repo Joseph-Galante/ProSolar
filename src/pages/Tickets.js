@@ -73,7 +73,7 @@ const Tickets = () =>
             });
         }
 
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}tickets/submit`, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/tickets/submit`, {
             title, description}, { headers: { Authorization: user.id }
         }).then(res => {
             // console.log(res);
@@ -111,7 +111,7 @@ const Tickets = () =>
 
     const getTickets = () =>
     {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}tickets/user`, { headers: { Authorization: user.id }
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/tickets/user`, { headers: { Authorization: user.id }
         }).then(res =>
         {
             // console.log(res)
