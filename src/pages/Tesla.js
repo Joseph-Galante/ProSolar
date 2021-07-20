@@ -101,7 +101,7 @@ const Tesla = () =>
             });
         }
         // choose between dev or prod url
-        if (BuildConfig.BACKEND_URL)
+        if (BuildConfig)
         {
             url = BuildConfig.BACKEND_URL;
         }
