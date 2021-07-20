@@ -1,0 +1,8 @@
+{
+    "appId": "io.ionic.prosolar",
+    "appName": "prosolar",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "build",
+    "cordova": {}
+}
