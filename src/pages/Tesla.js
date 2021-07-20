@@ -103,7 +103,7 @@ const Tesla = () =>
         // choose between dev or prod url
         if (process.env.ENV !== 'dev')
         {
-            url = BuildConfig.BACKEND_URL;
+            url = 'http://prosolardata.herokuapp.com';
         }
 
         axios.put(`${url}/user/profile`, {
