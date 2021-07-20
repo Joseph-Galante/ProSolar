@@ -19,6 +19,9 @@ const Tickets = () =>
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
     const [ tickets, setTickets ] = useState([]);
+
+    // variables
+    let url = 'process.env.REACT_APP_BACKEND_URL';
     
     // functions
     const submitTicket = (e) =>
@@ -73,7 +76,13 @@ const Tickets = () =>
             });
         }
 
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/tickets/submit`, {
+        // choose between dev or prod url
+        if (!process.env.REACT_APP_BACKEND_URL)
+        {
+            url = 'BuildConfig.BACKEND_URL';
+        }
+
+        axios.post(`${eval(url)}/tickets/submit`, {
             title, description}, { headers: { Authorization: user.id }
         }).then(res => {
             // console.log(res);

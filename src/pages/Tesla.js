@@ -23,6 +23,9 @@ const Tesla = () =>
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
 
+    // variables
+    let url = 'process.env.REACT_APP_BACKEND_URL';
+
     // functions
     const logout = () =>
     {
@@ -97,8 +100,13 @@ const Tesla = () =>
                 i.classList.remove("invalid");
             });
         }
+        // choose between dev or prod url
+        if (!process.env.REACT_APP_BACKEND_URL)
+        {
+            url = 'BuildConfig.BACKEND_URL';
+        }
 
-        axios.put(`${process.env.REACT_APP_BACKEND_URL}/user/profile`, {
+        axios.put(`${eval(url)}/user/profile`, {
             name: name,
             email: email,
             password: password

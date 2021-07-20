@@ -15,6 +15,9 @@ const Login = () =>
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
 
+    // variables
+    let url = 'process.env.REACT_APP_BACKEND_URL';
+
     // functions
     const handleSubmit = (e) =>
     {
@@ -52,7 +55,14 @@ const Login = () =>
             }
             return;
         }
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, {
+
+        // choose between dev or prod url
+        if (!process.env.REACT_APP_BACKEND_URL)
+        {
+            url = 'BuildConfig.BACKEND_URL';
+        }
+
+        axios.post(`${eval(url)}/user/login`, {
             email: email,
             password: password
         }).then((res) =>

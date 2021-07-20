@@ -19,7 +19,6 @@ const Referrals = () =>
     const [ friendsEmail, setFriendsEmail ] = useState('');
     const [ friendsPhone, setFriendsPhone ] = useState('');
     const [ yourPhone, setYourPhone ] = useState('');
-
     // functions
     const submitReferral = (e) =>
     {
