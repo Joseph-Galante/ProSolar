@@ -1,5 +1,5 @@
 // imports
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
 // pages
@@ -101,7 +101,7 @@ const Tesla = () =>
             });
         }
         // choose between dev or prod url
-        if (BuildConfig)
+        if (process.env.ENV !== 'dev')
         {
             url = BuildConfig.BACKEND_URL;
         }

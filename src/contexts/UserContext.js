@@ -17,7 +17,7 @@ const UserProvider = ({children}) =>
         if (userId)
         {
             // choose between dev or prod url
-            if (BuildConfig)
+            if (process.env.ENV !== 'dev')
             {
                 url = BuildConfig.BACKEND_URL;
             }
