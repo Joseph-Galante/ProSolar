@@ -79,7 +79,7 @@ const Tickets = () =>
         // choose between dev or prod url
         if (process.env.ENV !== 'dev')
         {
-            url = 'http://prosolardata.herokuapp.com';
+            url = 'https://prosolardata.herokuapp.com';
         }
 
         axios.post(`${url}/tickets/submit`, {

@@ -103,7 +103,7 @@ const Tesla = () =>
         // choose between dev or prod url
         if (process.env.ENV !== 'dev')
         {
-            url = 'http://prosolardata.herokuapp.com';
+            url = 'https://prosolardata.herokuapp.com';
         }
 
         axios.put(`${url}/user/profile`, {
