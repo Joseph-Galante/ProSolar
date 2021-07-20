@@ -8,7 +8,7 @@ const UserProvider = ({children}) =>
 {
     const [user, setUser] = useState({});
 
-    let url = 'process.env.REACT_APP_BACKEND_URL';
+    let url = process.env.REACT_APP_BACKEND_URL;
 
     const verifyUser = () =>
     {
@@ -17,12 +17,12 @@ const UserProvider = ({children}) =>
         if (userId)
         {
             // choose between dev or prod url
-            if (!process.env.REACT_APP_BACKEND_URL)
+            if (BuildConfig.BACKEND_URL)
             {
-                url = 'BuildConfig.BACKEND_URL';
+                url = BuildConfig.BACKEND_URL;
             }
 
-            axios.get(`${eval(url)}/user/verify`, {
+            axios.get(`${url}/user/verify`, {
                 headers: { Authorization: userId }
             }).then((res) =>
             {

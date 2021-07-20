@@ -21,7 +21,7 @@ const Tickets = () =>
     const [ tickets, setTickets ] = useState([]);
 
     // variables
-    let url = 'process.env.REACT_APP_BACKEND_URL';
+    let url = process.env.REACT_APP_BACKEND_URL;
     
     // functions
     const submitTicket = (e) =>
@@ -77,12 +77,12 @@ const Tickets = () =>
         }
 
         // choose between dev or prod url
-        if (!process.env.REACT_APP_BACKEND_URL)
+        if (BuildConfig.BACKEND_URL)
         {
-            url = 'BuildConfig.BACKEND_URL';
+            url = BuildConfig.BACKEND_URL;
         }
 
-        axios.post(`${eval(url)}/tickets/submit`, {
+        axios.post(`${url}/tickets/submit`, {
             title, description}, { headers: { Authorization: user.id }
         }).then(res => {
             // console.log(res);
