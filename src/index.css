@@ -275,7 +275,7 @@ textarea {
   width: 80%;
   background-color: hsl(0, 0%, 20%);
   position: fixed;
-  top: 20%;
+  top: 8%;
   border-radius: 2%;
 }
 .drop-line h3 {
