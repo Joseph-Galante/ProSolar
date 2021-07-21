@@ -100,7 +100,7 @@ const Tesla = () =>
                 i.classList.remove("invalid");
             });
         }
-        // choose between dev or prod url
+        // check for dev env
         if (process.env.ENV === 'dev')
         {
             url = process.env.REACT_APP_BACKEND_URL;

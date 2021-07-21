@@ -56,14 +56,14 @@ const Login = () =>
             return;
         }
 
-        // choose between dev or prod url
+        // check for dev env
         if (process.env.ENV === 'dev')
         {
             url = process.env.REACT_APP_BACKEND_URL;
         }
 
-        // clear messages
-        document.querySelector(".messages").innerHTML = null;
+        // // clear messages
+        // document.querySelector(".messages").innerHTML = null;
         // // create error message
         // const message = document.createElement("p");
         // message.innerHTML = `URL: ${url}`;

@@ -76,11 +76,20 @@ const Tickets = () =>
             });
         }
 
-        // choose between dev or prod url
+        // check for dev env
         if (process.env.ENV === 'dev')
         {
             url = process.env.REACT_APP_BACKEND_URL;
         }
+
+        // clear messages
+        document.querySelector(".messages").innerHTML = null;
+        // create error message
+        const message = document.createElement("p");
+        message.innerHTML = `URL: ${url}`;
+        message.style.color = "red";
+        // add message
+        document.querySelector(".messages").append(message);
 
         axios.post(`${url}/tickets/submit`, {
             title, description}, { headers: { Authorization: user.id }
@@ -115,12 +124,20 @@ const Tickets = () =>
                 // load tickets
                 getTickets();
             }).catch(error => console.log(error.message));
-        }).catch(error => console.log(error.message));
+        }).catch((error) => {
+            console.log(error.message);
+        });
     }
 
     const getTickets = () =>
     {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/tickets/user`, { headers: { Authorization: user.id }
+        // check for dev env
+        if (process.env.ENV === 'dev')
+        {
+            url = process.env.REACT_APP_BACKEND_URL;
+        }
+
+        axios.get(`${url}/tickets/user`, { headers: { Authorization: user.id }
         }).then(res =>
         {
             // console.log(res)
