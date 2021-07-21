@@ -189,19 +189,18 @@ textarea {
   width: 100%;
 }
 .ticket-form .labels {
-  width: 37%;
-  margin: -13% 0 0 0;
+  height: 158px;
+  margin: 0 10px 0 0;
 }
 .ticket-form .inputs {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 40%;
-  margin: 0 0 20px 0;
+  align-items: flex-start;
+  height: 150px;
 }
-.ticket-form .inputs textarea {
-  margin: 10px 0 0 0;
+#description {
+  width: 91%;
 }
 .tickets {
   display: flex;
@@ -223,10 +222,6 @@ textarea {
 }
 .ticket-ids p:nth-child(even), .ticket-titles p:nth-child(even), .ticket-opens p:nth-child(even) {
   background-color: hsl(0, 0%, 20%);
-}
-.tickets-page #description {
-  margin: 10px 0 0 -9px;
-  width: 79%;
 }
 
 /* =========================================== REFERRALS =========================================== */
