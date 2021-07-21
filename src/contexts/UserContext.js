@@ -8,7 +8,7 @@ const UserProvider = ({children}) =>
 {
     const [user, setUser] = useState({});
 
-    let url = process.env.REACT_APP_BACKEND_URL;
+    let url = 'https://prosolardata.herokuapp.com';
 
     const verifyUser = () =>
     {
@@ -17,9 +17,9 @@ const UserProvider = ({children}) =>
         if (userId)
         {
             // choose between dev or prod url
-            if (process.env.ENV !== 'dev')
+            if (process.env.ENV === 'dev')
             {
-                url = 'https://prosolardata.herokuapp.com';
+                url = process.env.REACT_APP_BACKEND_URL;
             }
 
             axios.get(`${url}/user/verify`, {

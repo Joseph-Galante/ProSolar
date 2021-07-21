@@ -21,7 +21,7 @@ const Tickets = () =>
     const [ tickets, setTickets ] = useState([]);
 
     // variables
-    let url = process.env.REACT_APP_BACKEND_URL;
+    let url = 'https://prosolardata.herokuapp.com';
     
     // functions
     const submitTicket = (e) =>
@@ -77,9 +77,9 @@ const Tickets = () =>
         }
 
         // choose between dev or prod url
-        if (process.env.ENV !== 'dev')
+        if (process.env.ENV === 'dev')
         {
-            url = 'https://prosolardata.herokuapp.com';
+            url = process.env.REACT_APP_BACKEND_URL;
         }
 
         axios.post(`${url}/tickets/submit`, {

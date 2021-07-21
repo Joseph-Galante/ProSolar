@@ -57,31 +57,37 @@ const Login = () =>
         }
 
         // choose between dev or prod url
-        if (process.env.ENV !== 'dev')
+        if (process.env.ENV === 'dev')
         {
             url = process.env.REACT_APP_BACKEND_URL;
         }
 
         // clear messages
         document.querySelector(".messages").innerHTML = null;
-        // create error message
-        const message = document.createElement("p");
-        message.innerHTML = `URL: ${url}`;
-        message.style.color = "red";
-        // add message
-        document.querySelector(".messages").append(message);
+        // // create error message
+        // const message = document.createElement("p");
+        // message.innerHTML = `URL: ${url}`;
+        // message.style.color = "red";
+        // // add message
+        // document.querySelector(".messages").append(message);
 
         axios.post(`${url}/user/login`, {
             email: email,
             password: password
         }).then((res) =>
         {
-            console.log(res);
+            // console.log(res);
             setUser(res.data.user);
             localStorage.setItem('userId', res.data.user.id);
         }).catch((error) =>
         {
             console.log(error.message);
+            // // create error message
+            // const message = document.createElement("p");
+            // message.innerHTML = `Error: ${error.message}`;
+            // message.style.color = "red";
+            // // add message
+            // document.querySelector(".messages").append(message);
             // check for unauthorized message - incorrect password
             if (error.message === 'Request failed with status code 401')
             {

@@ -24,7 +24,7 @@ const Tesla = () =>
     const [ password, setPassword ] = useState('');
 
     // variables
-    let url = process.env.REACT_APP_BACKEND_URL;
+    let url = 'https://prosolardata.herokuapp.com';
 
     // functions
     const logout = () =>
@@ -101,9 +101,9 @@ const Tesla = () =>
             });
         }
         // choose between dev or prod url
-        if (process.env.ENV !== 'dev')
+        if (process.env.ENV === 'dev')
         {
-            url = 'https://prosolardata.herokuapp.com';
+            url = process.env.REACT_APP_BACKEND_URL;
         }
 
         axios.put(`${url}/user/profile`, {
