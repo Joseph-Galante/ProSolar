@@ -131,14 +131,13 @@ textarea {
 .login-labels {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-end;
-}
-.login-labels label {
-  margin: 12px 10px;
 }
 .login-inputs {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
 }
 .user-info, .module-info {
