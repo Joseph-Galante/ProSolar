@@ -131,14 +131,20 @@ textarea {
 .login-labels {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: flex-end;
+  margin: 0 10px 0 0;
+  height: 85px;
+}
+.login-labels label {
+  margin: 10px 0;
 }
 .login-inputs {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: flex-start;
+  height: 85px;
 }
 .user-info, .module-info {
   display: flex;
@@ -151,10 +157,6 @@ textarea {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 50%;
-}
-.user-info .labels, .module-info .labels {
-  width: 47%;
 }
 .user-info .info p {
   margin: 8px 20px;
@@ -164,10 +166,15 @@ textarea {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 50%;
 }
 .edit-info input[type="text"] {
   margin: 8px 20px;
+}
+.home-units {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .module-info .info p {
   margin: 8px 20px;

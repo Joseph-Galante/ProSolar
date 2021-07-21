@@ -161,25 +161,44 @@ const Tesla = () =>
                         </section>
                     }
                     <br/>
+                    <h3>Home Images</h3>
                     <section className="home-units">
-                        <h2>HOME IMAGES</h2>
+                        {user.id ?
+                            user.homeImages ?
+                                user.homeImages.length === 0 ?
+                                    'No images to display'
+                                    :
+                                    user.homeImages.map((img, i) =>
+                                    {
+                                        return (
+                                            <img key={i} src={img.src} alt="404" width="50%" /> 
+                                        )
+                                    })
+                                :
+                                'No images to display'
+                            :
+                            'Getting home images...'
+
+                        }
                     </section>
                     <br/>
                     <h3>Module Info</h3>
                     <section className="module-info">
                         <section className="labels">
                             <p>Type</p>
-                            <p>Qty</p>
-                            <p>kW</p>
+                            <p>Quantity</p>
+                            <p>kW Proposed</p>
                             <p>Wattage</p>
                             <p>Inverter</p>
+                            <p>Powerwalls</p>
                         </section>
                         <section className="info">
                             <p>{user.modType}</p>
-                            <p>{user.modNum} Powerwalls</p>
-                            <p>{user.modKW}kW</p>
-                            <p>{user.modWattage}W</p>
+                            <p>{user.modNum}</p>
+                            <p>{user.modKW / 1000} kW</p>
+                            <p>{user.modWattage} W</p>
                             <p>{user.inverter}</p>
+                            <p>{user.powerwallNum}</p>
                         </section>
                     </section>
                 </>
