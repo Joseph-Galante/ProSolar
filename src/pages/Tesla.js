@@ -178,7 +178,6 @@ const Tesla = () =>
                                 'No images to display'
                             :
                             'Getting home images...'
-
                         }
                     </section>
                     <br/>

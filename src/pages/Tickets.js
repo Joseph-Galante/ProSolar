@@ -40,7 +40,7 @@ const Tickets = () =>
                 titleInput.classList.add("invalid");
                 // create invalid message
                 const message = document.createElement("p");
-                message.innerHTML = "Title is required";
+                message.innerHTML = "Subject is required";
                 message.style.color = "red";
                 // add message
                 document.querySelector(".messages").append(message);
@@ -82,14 +82,14 @@ const Tickets = () =>
             url = process.env.REACT_APP_BACKEND_URL;
         }
 
-        // clear messages
-        document.querySelector(".messages").innerHTML = null;
-        // create error message
-        const message = document.createElement("p");
-        message.innerHTML = `URL: ${url}`;
-        message.style.color = "red";
-        // add message
-        document.querySelector(".messages").append(message);
+        // // clear messages
+        // document.querySelector(".messages").innerHTML = null;
+        // // create error message
+        // const message = document.createElement("p");
+        // message.innerHTML = `URL: ${url}`;
+        // message.style.color = "red";
+        // // add message
+        // document.querySelector(".messages").append(message);
 
         axios.post(`${url}/tickets/submit`, {
             title, description}, { headers: { Authorization: user.id }
@@ -145,6 +145,18 @@ const Tickets = () =>
         }).catch(error => console.log(error.message));
     }
 
+    const convertTime = (time) =>
+    {
+        if (time < 4)
+        {
+            time = parseInt(time) + 24;
+        }
+        
+        time = Math.abs(time - 12) - 4;
+
+        return time;
+    }
+
     // on component load
     useEffect(() => {setNav("#tickets")}, []);
     useEffect(getTickets, []);
@@ -196,7 +208,7 @@ const Tickets = () =>
                             {tickets.map((t, i) =>
                             {
                                 if (t.complete) return;
-                                else return ( <p key={i+tickets.length*2}>{`${t.opened.slice(0, 10)} ${t.opened.slice(11, 13) % 12}${t.opened.slice(13, 19)} ${t.opened.slice(11, 13) / 12 > 1 ? 'PM' : 'AM'}`}</p> );
+                                else return ( <p key={i+tickets.length*2}>{`${t.opened.slice(0, 8)}${t.opened.slice(11, 13) < 4 ? t.opened.slice(8, 10) - 1 : t.opened.slice(8, 10)} ${convertTime(t.opened.slice(11, 13))}${t.opened.slice(13, 19)} ${t.opened.slice(11, 13) < 4 ? 'PM' : t.opened.slice(11, 13) / 12 < 1 ? 'AM' : 'PM'}`}</p> );
                             })}
                         </section>
                     </section>
