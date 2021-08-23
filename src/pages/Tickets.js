@@ -104,7 +104,7 @@ const Tickets = () =>
                     "title": title,
                     "message": description,
                     "ticket_id": res.data.ticket.id,
-                    "opened": `${res.data.ticket.opened.slice(0, 10)} ${res.data.ticket.opened.slice(11, 13) % 12}${res.data.ticket.opened.slice(13, 19)} ${res.data.ticket.opened.slice(11, 13) / 12 >= 1 ? 'PM' : 'AM'}`
+                    "opened": `${res.data.ticket.opened.slice(0, 8)}${res.data.ticket.opened.slice(11, 13) < 4 ? res.data.ticket.opened.slice(8, 10) - 1 : res.data.ticket.opened.slice(8, 10)} ${convertTime(res.data.ticket.opened.slice(11, 13))}${res.data.ticket.opened.slice(13, 19)} ${res.data.ticket.opened.slice(11, 13) < 4 ? 'PM' : res.data.ticket.opened.slice(11, 13) / 12 < 1 ? 'AM' : 'PM'}`
                 },
                 'user_VumGsyYh6mZ735zAMicaM'
             ).then(res =>
@@ -154,7 +154,7 @@ const Tickets = () =>
         
         time = Math.abs(time - 12) - 4;
 
-        return time;
+        return time == 0 ? 12 : time;
     }
 
     // on component load

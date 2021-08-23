@@ -3,5 +3,8 @@
     "integrations": {
       "capacitor": {}
     },
-    "type": "react"
+    "type": "react",
+    "hooks": {
+      "build:before": "./src/env.js"
+    }
   }
